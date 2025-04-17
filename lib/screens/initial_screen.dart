@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:minha_geladeira/core/constants/app_colors.dart';
 import 'package:minha_geladeira/core/utils/responsive.dart';
 import 'package:minha_geladeira/screens/insert_food_screen.dart';
@@ -16,29 +15,44 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: AppColors.background,
+        decoration: BoxDecoration( image: DecorationImage(image: AssetImage('assets/images/background.png'), fit: BoxFit.cover)),
         height: Responsive.height(context),
         width: Responsive.width(context),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Minha Geladeira',
-              style: TextStyle(
-                  color: AppColors.primary,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
-            ),
-            Lottie.asset('assets/animations/fridge_animation.json',
-                width: 200, height: 100),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => FoodInsert()));
-                },
-                child: Text('Iniciar'))
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              
+              Text(
+                'Minha Geladeira',
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 27, 27, 27),
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: Responsive.height(context) * 0.02,),
+              Text(
+                'Pra nunca mais esquecer aquele iogurte',
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 34, 34, 34),
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: Responsive.height(context) * 0.07,),
+              SizedBox(
+                width: Responsive.width(context) * 0.3,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(backgroundColor:const Color.fromARGB(255, 27, 27, 27) ),
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => FoodInsert()));
+                    },
+                    child: Text('Iniciar', style: TextStyle(color: Colors.white, fontSize: 15),)),
+              )
+            ],
+          ),
         ),
       ),
     );

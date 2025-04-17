@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Azul bem clarinho pro fundo
-  static const Color background = Color(0xFFE3F2FD);
+  static const Color primary = Color(0xFF918AE3);
 
   // Azul médio: cor principal
-  static const Color primary = Color(0xFF2196F3);
+  static const Color primaryLight = Color(0xFFC9C4F0);
 
   // Verde claro: destaque positivo (comida fresca, sucesso etc)
-  static const Color accent = Color(0xFF81C784);
+  static const Color accent = Color(0xFF68C3A3);
 
   // Cinza escuro: texto principal
-  static const Color textPrimary = Color(0xFF212121);
+  static const Color  background = Color(0xFFF5F5F7);
 
   // Cinza claro: texto secundário
-  static const Color textSecondary = Color(0xFF757575);
+  static const Color  textPrimary = Color(0xFF443F9E);
 
   // Vermelho suave: para alerta (validade vencida, erro)
-  static const Color danger = Color(0xFFEF5350);
+  static const Color  textSecondary = Color(0xFF8A8A99);
 }
