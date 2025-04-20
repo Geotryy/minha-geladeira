@@ -8,7 +8,7 @@ class AppColors {
   static const Color primaryLight = Color(0xFFC9C4F0);
 
   // Verde claro: destaque positivo (comida fresca, sucesso etc)
-  static const Color accent = Color(0xFF68C3A3);
+  static const Color accent = Color.fromARGB(255, 27, 27, 27);
 
   // Cinza escuro: texto principal
   static const Color  background = Color(0xFFF5F5F7);

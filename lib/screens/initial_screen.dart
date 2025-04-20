@@ -28,7 +28,7 @@ class _InitialScreenState extends State<InitialScreen> {
               Text(
                 'Minha Geladeira',
                 style: TextStyle(
-                    color: const Color.fromARGB(255, 27, 27, 27),
+                    color: AppColors.accent,
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
               ),
@@ -36,7 +36,7 @@ class _InitialScreenState extends State<InitialScreen> {
               Text(
                 'Pra nunca mais esquecer aquele iogurte',
                 style: TextStyle(
-                    color: const Color.fromARGB(255, 34, 34, 34),
+                    color: AppColors.accent,
                     fontSize: 15,
                     fontWeight: FontWeight.bold),
               ),
@@ -44,7 +44,7 @@ class _InitialScreenState extends State<InitialScreen> {
               SizedBox(
                 width: Responsive.width(context) * 0.3,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor:const Color.fromARGB(255, 27, 27, 27) ),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent),
                     onPressed: () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => FoodInsert()));

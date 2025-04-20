@@ -12,4 +12,24 @@ class Alimento {
     required this.quantidade,
     required this.categoria,
   });
+
+  Map<String, dynamic> toMap(){
+    return {
+    'id': id,
+    'nome': nome,
+    'validade': validade.toIso8601String(),
+    'quantidade': quantidade,
+    'categoria': categoria
+    };
+  }
+  factory Alimento.fromMap(Map<String, dynamic> map) {
+  return Alimento(
+    id: map['id'],
+    nome: map['nome'],
+    validade: DateTime.parse(map['validade']),
+    quantidade: map['quantidade'],
+    categoria: map['categoria'],
+  );
+}
+
 }

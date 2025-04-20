@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:minha_geladeira/controller/controller_form.dart';
+import 'package:minha_geladeira/core/constants/app_colors.dart';
 import 'package:minha_geladeira/core/utils/responsive.dart';
+import 'package:minha_geladeira/core/validator/validator_form.dart';
 import 'package:minha_geladeira/data/models/model_food.dart';
 import 'package:minha_geladeira/screens/components/custom_text_field.dart';
 import 'package:minha_geladeira/screens/components/date_custom.dart';
@@ -13,32 +16,11 @@ class FoodInsert extends StatefulWidget {
 }
 
 class _FoodInsertState extends State<FoodInsert> {
-  final _formKey = GlobalKey<FormState>();
-  final _nomeController = TextEditingController();
-  final _validadeController = TextEditingController();
-  final _qtdController = TextEditingController();
-  final _categoriaController = TextEditingController();
-  final DateFormat formatter = DateFormat('dd/MM/yyyy');
-
-  final List<Alimento> alimentos = [];
-
+  final controller = ControllerForm();
   void postAlimento() {
-    if (_formKey.currentState!.validate()) {
-      final novoAlimento = Alimento(
-          id: DateTime.now().millisecondsSinceEpoch,
-          nome: _nomeController.text,
-          validade: formatter.parse(_validadeController.text),
-          quantidade: int.tryParse(_qtdController.text) ?? 0,
-          categoria: _categoriaController.text);
-      setState(() {
-        alimentos.add(novoAlimento);
-        _nomeController.clear();
-        _qtdController.clear();
-        _validadeController.clear();
-        _categoriaController.clear();
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Alimento adicionado com sucesso!')));
+    if(controller.formKey.currentState!.validate()) {
+      controller.postAlimento();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Alimento adicionado com sucesso!')));
     }
   }
 
@@ -46,31 +28,54 @@ class _FoodInsertState extends State<FoodInsert> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: SizedBox(
+        child: Container(
+          color: AppColors.primaryLight,
+          padding: EdgeInsets.all(20),
           height: Responsive.height(context),
           child: Form(
-            key: _formKey,
+            key: controller.formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                    height: Responsive.height(context) * 0.1,
+                    child: Text(
+                      'Insira um Alimento',
+                      style: TextStyle(
+                          color: AppColors.textPrimary,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    )),
                 CustomTextField(
                   label: "Nome do Alimento",
-                  controller: _nomeController,
+                  controller: controller.nomeController,
                   isRequiredValidator: true,
+                  validator: requiredField('Digite um valor valido!'),
                 ),
                 DateCustom(
-                    controller: _validadeController,
+                    controller: controller.validadeController,
                     label: 'Selecione a data de validade'),
                 CustomTextField(
-                    label: "Quantidade", controller: _qtdController),
+                  label: "Quantidade",
+                  controller: controller.qtdController,
+                  isRequiredValidator: true,
+                  validator: integerField('Insira um numero valido!'),
+                ),
                 CustomTextField(
-                    label: "Categoria", controller: _categoriaController),
-                ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                    label: "Categoria",
+                    controller: controller.categoriaController),
+                SizedBox(
+                  width: Responsive.width(context),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                      ),
+                      onPressed: () {
                         postAlimento();
-                      }
-                    },
-                    child: Text('Adicionar Alimento'))
+                      },
+                      child: Text('Adicionar Alimento',
+                          style: TextStyle(color: Colors.white))),
+                )
               ],
             ),
           ),
