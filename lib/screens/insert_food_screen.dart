@@ -5,6 +5,7 @@ import 'package:minha_geladeira/core/utils/responsive.dart';
 import 'package:minha_geladeira/core/validator/validator_form.dart';
 import 'package:minha_geladeira/screens/components/custom_text_field.dart';
 import 'package:minha_geladeira/screens/components/date_custom.dart';
+import 'package:minha_geladeira/screens/list_food_screen.dart';
 
 class FoodInsert extends StatefulWidget {
   const FoodInsert({super.key});
@@ -15,11 +16,15 @@ class FoodInsert extends StatefulWidget {
 
 class _FoodInsertState extends State<FoodInsert> {
   final controller = ControllerForm();
-  void postAlimento() {
+  void postAlimento() async {
     if (controller.formKey.currentState!.validate()) {
-      controller.postAlimento();
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Alimento adicionado com sucesso!')));
+      final alimento = await controller.postAlimento();
+
+      if (alimento != null) {
+        setState(() {});
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Alimento adicionado com sucesso!')));
+      }
     }
   }
 
@@ -76,6 +81,24 @@ class _FoodInsertState extends State<FoodInsert> {
                         postAlimento();
                       },
                       child: Text('Adicionar Alimento',
+                          style: TextStyle(color: Colors.white))),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: Responsive.width(context),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ListFoodScreen()));
+                      },
+                      child: Text('Ver alimentos',
                           style: TextStyle(color: Colors.white))),
                 )
               ],

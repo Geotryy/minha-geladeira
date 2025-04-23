@@ -23,7 +23,7 @@ class ControllerForm {
         categoria: categoriaController.text);
 
     alimentos.add(novoAlimento);
-    DbHelper.inserirAlimento;
+    await DbHelper.inserirAlimento(novoAlimento);
     clearController();
     return novoAlimento;
   }
