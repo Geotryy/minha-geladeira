@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:minha_geladeira/data/models/model_food.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

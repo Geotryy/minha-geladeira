@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:minha_geladeira/controller/controller_form.dart';
 import 'package:minha_geladeira/core/constants/app_colors.dart';
 import 'package:minha_geladeira/core/utils/responsive.dart';
 import 'package:minha_geladeira/core/validator/validator_form.dart';
-import 'package:minha_geladeira/data/models/model_food.dart';
 import 'package:minha_geladeira/screens/components/custom_text_field.dart';
 import 'package:minha_geladeira/screens/components/date_custom.dart';
 
