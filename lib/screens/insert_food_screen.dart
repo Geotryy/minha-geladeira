@@ -18,9 +18,10 @@ class FoodInsert extends StatefulWidget {
 class _FoodInsertState extends State<FoodInsert> {
   final controller = ControllerForm();
   void postAlimento() {
-    if(controller.formKey.currentState!.validate()) {
+    if (controller.formKey.currentState!.validate()) {
       controller.postAlimento();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Alimento adicionado com sucesso!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Alimento adicionado com sucesso!')));
     }
   }
 
@@ -62,8 +63,11 @@ class _FoodInsertState extends State<FoodInsert> {
                   validator: integerField('Insira um numero valido!'),
                 ),
                 CustomTextField(
-                    label: "Categoria",
-                    controller: controller.categoriaController),
+                  label: "Categoria",
+                  controller: controller.categoriaController,
+                  isRequiredValidator: true,
+                  validator: requiredField('Digite um valor valido!'),
+                ),
                 SizedBox(
                   width: Responsive.width(context),
                   child: ElevatedButton(
