@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minha_geladeira/core/constants/app_colors.dart';
 import 'package:minha_geladeira/core/utils/responsive.dart';
+import 'package:minha_geladeira/screens/base/base_screen.dart';
 import 'package:minha_geladeira/screens/insert_food_screen.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _InitialScreenState extends State<InitialScreen> {
                   style: ElevatedButton.styleFrom(backgroundColor: AppColors.accent),
                     onPressed: () {
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => FoodInsert()));
+                          MaterialPageRoute(builder: (context) => BaseScreen()));
                     },
                     child: Text('Iniciar', style: TextStyle(color: Colors.white, fontSize: 15),)),
               )

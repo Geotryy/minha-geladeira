@@ -86,21 +86,7 @@ class _FoodInsertState extends State<FoodInsert> {
                 SizedBox(
                   height: 10,
                 ),
-                SizedBox(
-                  width: Responsive.width(context),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ListFoodScreen()));
-                      },
-                      child: Text('Ver alimentos',
-                          style: TextStyle(color: Colors.white))),
-                )
+               
               ],
             ),
           ),
