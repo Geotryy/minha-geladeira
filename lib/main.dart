@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minha_geladeira/screens/initial_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
             useMaterial3: true,
       ),
-      home: InitialScreen(),
+      home: TemporaryMessage(),
 locale: const Locale('pt', 'BR'), // 👈 adiciona localização
       supportedLocales: const [
         Locale('pt', 'BR'),
@@ -28,3 +27,16 @@ locale: const Locale('pt', 'BR'), // 👈 adiciona localização
   }
 }
 
+class TemporaryMessage extends StatefulWidget {
+  const TemporaryMessage({super.key});
+
+  @override
+  State<TemporaryMessage> createState() => _TemporaryMessageState();
+}
+
+class _TemporaryMessageState extends State<TemporaryMessage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(child: Text("Refazendo o projeto"),);
+  }
+}
