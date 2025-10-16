@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:minha_geladeira/screens/welcome_screen.dart';
 
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
             useMaterial3: true,
       ),
-      home: TemporaryMessage(),
+      home: WelcomeScreen(),
 locale: const Locale('pt', 'BR'), // 👈 adiciona localização
       supportedLocales: const [
         Locale('pt', 'BR'),
